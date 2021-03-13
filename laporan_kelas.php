@@ -6,7 +6,7 @@ if(isset($_SESSION['login']) ) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Laporan Data Guru</title>
+	<title>Laporan Data Kelas</title>
 	<hr/>
 	<style >
 		body{
@@ -26,25 +26,25 @@ if(isset($_SESSION['login']) ) {
 	</style>
 </head>
 <body>
-	<b>LAPORAN DATA SISWA</b>
+	<b>LAPORAN DATA KELAS</b>
 	<br>
 	<hr/>
 
 	<table border="1" cellspacing="" cellpadding="4" width="100%">
 	<tr>
 		<th>NO</th>
-		<th>ID</th>
-		<th>NAMA GURU</th>
+		<th>ID KELAS</th>
+		<th>KOMPETENSI KEAHLIAN</th>
 	</tr>
 	<?php
-	$data = $konek -> query("SELECT * FROM guru ORDER BY idguru ASC ");
+	$data = $konek -> query("SELECT * FROM kelas ORDER BY idkelas ASC ");
 	$i=1;
 	while ($dta = mysqli_fetch_assoc($data)) :
 	 ?>
 	<tr>
 		<td align="center"><?= $i ?></td>
-		<td align="center"><?= $dta['idguru'] ?></td>
-		<td align=""><?= $dta['namaguru'] ?></td>
+		<td align="center"><?= $dta['idkelas'] ?></td>
+		<td align=""><?= $dta['kompetensikeahlian'] ?></td>
 	</tr>
 	<?php $i++; ?>
 <?php endwhile; ?>
