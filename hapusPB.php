@@ -2,21 +2,21 @@
 session_start();
 include 'koneksi.php';
 if (isset($_SESSION['login']))  {
-	$hapus = $konek -> query("DELETE FROM guru WHERE idguru = '$_GET[id]'");
+	$hapus = $konek -> query("DELETE FROM pembayaran WHERE idpembayaran = '$_GET[id]'");
 
 	if( $hapus) {
 		echo "
 		<script>
-		alert('data guru berhasil dihapus');
-		document.location.href = 'dataguru.php';
+		alert('data pembayaran berhasil dihapus');
+		document.location.href = 'datapembayaran.php';
 		</script>
 		";
 	}else {
 		echo "
 		<script>
-		alert('data guru ini digunakan sebagai walikelas');
-		alert('data guru gagal dihapus');
-		document.location.href = 'dataguru.php';
+		alert('data pembayaran ini digunakan sebagai pembayaran');
+		alert('data pembayaran gagal dihapus');
+		document.location.href = 'datapembayaran.php';
 		</script>
 		";
 	}

@@ -12,11 +12,9 @@ include 'header.php';
  <table class="table table-bordered table-striped">
  	<tr>
  		<th>NO</th>
- 		<th>KELAS</th>
- 		<th>NIS</th>
- 		<th>NAMA SISWA</th>
- 		<th>TAHUN AJARAN</th>
-		<th>BIAYA</th>
+ 		<th>ID SSPP</th>
+ 		<th>TAHUN</th>
+ 		<th>NOMINAL</th>
 		<th>AKSI</th>
  	</tr>
  	<?php

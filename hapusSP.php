@@ -2,19 +2,19 @@
 session_start();
 include 'koneksi.php';
 if (isset($_SESSION['login'])){
-	$hapus  = $konek -> query("DELETE FROM siswa WHERE idsiswa ='$_GET[id]' ");
+	$hapus  = $konek -> query("DELETE FROM spp WHERE idspp ='$_GET[id]' ");
 	if($hapus){
 		echo "
 		<script>
 		alert('data berhasil dihapus');
-		document.location.href = 'datasiswa.php';
+		document.location.href = 'dataspp.php';
 		</script>
 		";
 	}else {
 		echo "
 		<script>
 		alert('data gagal dihapus data digunakan ditabel lain');
-		document.location.href = 'datasiswa.php';
+		document.location.href = 'dataspp.php';
 		</script>
 		";
 
