@@ -1,21 +1,21 @@
-<?php 
+<?php
 session_start();
 if (isset($_SESSION['login']) ) {
 	include 'koneksi.php';
-	$hapus = $konek -> query("DELETE FROM admin WHERE idadmin= '$_GET[id]' ");
+	$hapus = $konek -> query("DELETE FROM kelas WHERE idkelas= '$_GET[id]' ");
 	if ($hapus) {
 		echo "
 		<script>
-		alert('data admin berhasil dihapus');
-		document.location.href= 'dataadmin.php';
+		alert('data kelas berhasil dihapus');
+		document.location.href= 'datakelas.php';
 		</script>
 		";
 	}else {
 		echo "
 		<script>
-		alert('data admin digunakan ditabel siswa');
-		alert('data admin gagal dihapus');
-		document.location.href= 'dataadmin.php';
+		alert('data kelas digunakan ditabel kelas');
+		alert('data kelas gagal dihapus');
+		document.location.href= 'datakelas.php';
 		</script>
 		";
 	}

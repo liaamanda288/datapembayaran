@@ -37,7 +37,7 @@ if ( !isset($_SESSION['login']) ) {
 
 	<!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -49,13 +49,13 @@ if ( !isset($_SESSION['login']) ) {
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./">Home</a></li>
-						<li><a href="datasiswa.php">DATA SISWA</a></li>
-						<li><a href="datapembayaran.php">DATA PEMBAYARAN</a></li>
+            <li><a href="datasiswa.php">DATA SISWA</a></li>
+            <li><a href="datapembayaran.php">DATA PEMBAYARAN</a></li>
             <li><a href="datapetugas.php">DATA PETUGAS</a></li>
             <li><a href="dataspp.php">DATA SPP</a></li>
-						<li><a href="datakelas.php">DATA KELAS</a></li>
+						  <li><a href="datakelas.php">DATA KELAS</a></li>
             <li><a href="transaksi.php">TRANSAKSI</a></li>
+						  <li><a href="history.php">HISTORY</a></li>
             <li><a href="laporan.php">LAPORAN</a></li>
             <li><a href="logout.php">LOGOUT</a></li>
           </ul>
