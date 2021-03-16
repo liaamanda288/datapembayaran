@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION['login']) ) {
 	include 'koneksi.php';
@@ -7,7 +7,7 @@ if(isset($_SESSION['login']) ) {
 <html>
 <head>
 	<title>Laporan Data Siswa</title>
-	
+
 	<style >
 		body{
 			font-family: arial;
@@ -29,28 +29,26 @@ if(isset($_SESSION['login']) ) {
 	<b>LAPORAN DATA SISWA</b>
 	<br/>
 	<hr/>
-	
+
 	<table border="1" cellspacing="" cellpadding="4" width="100%">
 	<tr>
 		<th>NO</th>
-		<th>ID</th>
+		<th>NISN</th>
 		<th>NIS</th>
 		<th>NAMA SISWA</th>
-		<th>KELAS</th>
-		<th>TAHUN AJARAN</th>
+		<th>ID KELAS</th>
 	</tr>
-	<?php 
+	<?php
 	$data = $konek -> query("SELECT * FROM siswa ORDER BY idsiswa ASC ");
 	$i=1;
 	while ($dta = mysqli_fetch_assoc($data)) :
 	 ?>
 	<tr>
 		<td align="center"><?= $i ?></td>
-		<td align="center"><?= $dta['idsiswa'] ?></td>
+		<td align="center"><?= $dta['nisn'] ?></td>
 		<td align="center"><?= $dta['nis'] ?></td>
-		<td align=""><?= $dta['namasiswa'] ?></td>
-		<td align=""><?= $dta['kelas'] ?></td>
-		<td align=""><?= $dta['tahunajaran'] ?></td>
+		<td align=""><?= $dta['nama'] ?></td>
+		<td align=""><?= $dta['idkelas'] ?></td>
 	</tr>
 	<?php $i++; ?>
 <?php endwhile; ?>
@@ -75,7 +73,7 @@ if(isset($_SESSION['login']) ) {
 </html>
 
 
-<?php 
+<?php
 } else {
 	header("location : login.php");
 }

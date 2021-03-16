@@ -18,18 +18,18 @@ if(isset($_SESSION['login']) ) {
 		// tanggal bayar
 		$tglbayar = date('Y-m-d');
 
-		// id admin
-		$admin = $_SESSION['id'];
+		// id petugas
+		$petugas = $_SESSION['id'];
 
-		$byr = mysqli_query($konek ,"UPDATE spp SET 
+		$byr = mysqli_query($konek ,"UPDATE spp SET
 			nobayar = '$nextNobayar',
 			tglbayar = '$tglbayar',
 			ket = 'LUNAS',
-			idadmin = '$admin' 
+			idpetugas = '$petugas'
 			WHERE idspp = '$idspp'");
 
 		if ($byr) {
-			
+
 			header('location: transaksi.php?nis='.$nis);
 		}else {
 			echo "
@@ -39,17 +39,17 @@ if(isset($_SESSION['login']) ) {
 			";
 
 		}
-		
+
 	}
 	else if($_GET['act']=='batal'){
 	    $idspp = $_GET['id'];
 		$nis   = $_GET['nis'];
 
-		$batal = mysqli_query($konek ,"UPDATE spp SET 
+		$batal = mysqli_query($konek ,"UPDATE spp SET
 			nobayar = null,
 			tglbayar = null,
 			ket = null,
-			idadmin = null 
+			idpetugas = null
 			WHERE idspp = '$idspp'");
 
 			if ($batal) {

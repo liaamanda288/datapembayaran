@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST' ) {
 	if ( $user == "" || $p == ""){
 		$error = true;
 	}else {
-		$data = $konek -> query("SELECT * FROM admin WHERE username ='".$user."' AND password = '".$p."'");
+		$data = $konek -> query("SELECT * FROM petugas WHERE username ='".$user."' AND password = '".$p."'");
 	$dt = mysqli_num_rows($data);
 	$dta = mysqli_fetch_Assoc($data);
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST' ) {
 		session_start();
 		$_SESSION['login']    = TRUE;
 		$_SESSION['username'] = $dta['username'];
-		$_SESSION['id']		  = $dta['idadmin'];
+		$_SESSION['idpetugas']		  = $dta['idpetugas'];
 		header('Location: index.php');
 	}else{
 		echo "
