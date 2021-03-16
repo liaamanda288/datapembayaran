@@ -26,7 +26,7 @@ if(isset($_SESSION['login']) ) {
 	</style>
 </head>
 <body>
-	<h3>SMK NEGERI 03 SELUMA<b><br/>LAPORAN PEMBAYARAN SPP</b></h3>
+	<h3>SMK NEGERI 1 KRAGILAN<b><br/>LAPORAN PEMBAYARAN SPP</b></h3>
 	<br/>
 	<hr/>
 	<?php
@@ -38,7 +38,7 @@ if(isset($_SESSION['login']) ) {
 		<tr>
 			<td>Nama Siswa </td>
 			<td>:</td>
-			<td> <?= $sw['namasiswa'] ?></td>
+			<td> <?= $sw['nama'] ?></td>
 		</tr>
 		<tr>
 			<td>Nis </td>
@@ -48,7 +48,7 @@ if(isset($_SESSION['login']) ) {
 		<tr>
 			<td>Kelas </td>
 			<td>:</td>
-			<td> <?= $sw['kelas'] ?></td>
+			<td> <?= $sw['namakelas'] ?></td>
 		</tr>
 	</table>
 	<hr>
@@ -62,8 +62,8 @@ if(isset($_SESSION['login']) ) {
 		<th>KETERANGAN</th>
 	</tr>
 	<?php
-	$spp = $konek -> query("SELECT spp.*,siswa.nis,siswa.namasiswa,siswa.kelas
-							FROM spp INNER JOIN siswa ON spp.idsiswa=siswa.idsiswa
+	$spp = $konek -> query("SELECT spp.*,siswa.nisn,siswa.nis,siswa.nama,siswa.idkelas
+							FROM spp INNER JOIN siswa ON spp.idspp=siswa.idsiswa
 							WHERE idspp ='$_GET[id]'
 							ORDER BY nobayar ASC");
 	$i=1;
@@ -72,7 +72,7 @@ if(isset($_SESSION['login']) ) {
 	 ?>
 	<tr>
 		<td align="center"><?= $i ?></td>
-		<td align="center"><?= $dta['idsiswa'] ?></td>
+		<td align="center"><?= $dta['nisn'] ?></td>
 		<td align=""><?= $dta['nobayar'] ?></td>
 		<td align=""><?= $dta['bulan'] ?></td>
 		<td align="right"><?= $dta['jumlah'] ?></td>

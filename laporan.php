@@ -18,12 +18,6 @@
 			<th width="200">Cetak</th>
 		</tr>
 		<tr>
-			<td>Laporan Data Guru</td>
-			<td>
-			<a href="laporan_guru.php" target="_blank"><button class="btn btn-primary btn-sm"  > CETAK</button></a>
-				</td>
-		</tr> 
-		<tr>
 			<td>
 				Laporan Data Siswa
 			</td>
@@ -31,8 +25,8 @@
 			<a href="laporan_siswa.php" target="_blank"><button class="btn btn-primary btn-sm" > CETAK</button></a>
 			</td>
 		</tr>
-		
-		
+
+
 
 		<form class="col-md-2" action="laporan_pembayaran.php" method="GET" target="_blank" >
 			<td>
