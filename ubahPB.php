@@ -6,7 +6,7 @@ include 'header.php';
 ?>
 <div class="container">
 	<div class="page-header">
-<h2 >EDIT DATA WALI KELAS</h2>
+<h2 >EDIT DATA PEMBAYARAN</h2>
 </div>
 	<form action="" method="post" >
 		<table class="table" >
@@ -29,7 +29,7 @@ include 'header.php';
 							if ($dtA['idguru'] == $dta['idguru']){
 								$selected = 'selected';
 							}else {
-								$selected="";	
+								$selected="";
 							}
 							echo "<option value = '$dta[idguru]'$selected > $dta[namaguru]</option>" ;
 						}

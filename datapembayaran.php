@@ -5,7 +5,7 @@ include 'header.php';
  ?>
 <div class="container">
 	<div class="page-header">
-<h2> DATA SISWA SMK NEGERI 1 KRAGILAN</h2>
+<h2> DATA PEMBAYARAN SMK NEGERI 1 KRAGILAN</h2>
 	</div>
 <a class="btn btn-primary " href="tambahPB.php">TAMBAH DATA</a>
  <br/> <br>
@@ -14,7 +14,8 @@ include 'header.php';
  		<th>NO</th>
  		<th>ID PEMBAYARAN</th>
  		<th>ID PETUGAS</th>
- 		<th>TANGGAL BAYAR</th>
+ 		<th>NISN</th>
+    <th>TANGGAL BAYAR</th>
  		<th>BULAN DI BAYAR</th>
 		<th>TAHUN DI BAYAR</th>
 		<th>ID SPP</th>
