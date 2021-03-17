@@ -1,4 +1,4 @@
 <?php
-$konek = mysqli_connect('localhost','root','','sppsekolah');
+$konek = mysqli_connect('localhost','root','','pembayaranspp');
 
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 13, 2021 at 07:00 
+-- Generation Time: Mar 17, 2021 at 04:37 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sppsekolah`
+-- Database: `pembayaranspp`
 --
 
 -- --------------------------------------------------------
@@ -27,9 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `kelas` (
-  `id_kelas` int(11) NOT NULL,
-  `nama_kelas` varchar(10) NOT NULL,
-  `kompetensi_keahlian` varchar(50) NOT NULL
+  `idkelas` int(11) NOT NULL,
+  `namakelas` varchar(10) NOT NULL,
+  `kompetensikeahlian` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -39,14 +39,14 @@ CREATE TABLE `kelas` (
 --
 
 CREATE TABLE `pembayaran` (
-  `id_pembayaran` int(11) NOT NULL,
-  `id_petugas` int(11) NOT NULL,
+  `idpembayaran` int(11) NOT NULL,
+  `idpetugas` int(11) NOT NULL,
   `nisn` varchar(10) NOT NULL,
-  `tgl_bayar` date NOT NULL,
-  `bulan_dibayar` varchar(8) NOT NULL,
-  `tahun_dibayar` varchar(4) NOT NULL,
-  `id_spp` int(11) NOT NULL,
-  `jumlah_bayar` int(11) NOT NULL
+  `tglbayar` date NOT NULL,
+  `bulandibayar` varchar(8) NOT NULL,
+  `tahundibayar` varchar(4) NOT NULL,
+  `idspp` int(11) NOT NULL,
+  `jumlahbayar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,10 +56,11 @@ CREATE TABLE `pembayaran` (
 --
 
 CREATE TABLE `petugas` (
-  `id_petugas` int(11) NOT NULL,
+  `idpetugas` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(35) NOT NULL,
-  `nama_petugas` enum('admin','petugas') NOT NULL
+  `password` varchar(32) NOT NULL,
+  `namapetugas` varchar(35) NOT NULL,
+  `level` enum('admin','petugas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -72,10 +73,10 @@ CREATE TABLE `siswa` (
   `nisn` char(10) NOT NULL,
   `nis` char(8) NOT NULL,
   `nama` varchar(35) NOT NULL,
-  `id_kelas` int(11) NOT NULL,
+  `idkelas` int(11) NOT NULL,
   `alamat` text NOT NULL,
-  `no_telp` varchar(13) NOT NULL,
-  `id_spp` int(11) NOT NULL
+  `notelp` varchar(13) NOT NULL,
+  `idspp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,7 +86,7 @@ CREATE TABLE `siswa` (
 --
 
 CREATE TABLE `spp` (
-  `id_spp` int(11) NOT NULL,
+  `idspp` int(11) NOT NULL,
   `tahun` int(11) NOT NULL,
   `nominal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -98,34 +99,32 @@ CREATE TABLE `spp` (
 -- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`id_kelas`),
-  ADD KEY `nama_kelas` (`nama_kelas`),
-  ADD KEY `kompetensi_keahlian` (`kompetensi_keahlian`);
+  ADD PRIMARY KEY (`idkelas`),
+  ADD KEY `namakelas` (`namakelas`),
+  ADD KEY `kompetensikeahlian` (`kompetensikeahlian`);
 
 --
 -- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_pembayaran`),
-  ADD KEY `id_petugas` (`id_petugas`),
+  ADD PRIMARY KEY (`idpembayaran`),
+  ADD KEY `idpetugas` (`idpetugas`),
   ADD KEY `nisn` (`nisn`),
-  ADD KEY `tgl_bayar` (`tgl_bayar`),
-  ADD KEY `tahun_dibayar` (`tahun_dibayar`),
-  ADD KEY `id_spp` (`id_spp`),
-  ADD KEY `jumlah_bayar` (`jumlah_bayar`),
-  ADD KEY `bulan_dibayar` (`bulan_dibayar`),
-  ADD KEY `tahun_dibayar_2` (`tahun_dibayar`),
-  ADD KEY `id_spp_2` (`id_spp`),
-  ADD KEY `jumlah_bayar_2` (`jumlah_bayar`);
+  ADD KEY `tglbayar` (`tglbayar`),
+  ADD KEY `bulandibayar` (`bulandibayar`),
+  ADD KEY `tahundibayar` (`tahundibayar`),
+  ADD KEY `idspp` (`idspp`),
+  ADD KEY `jumlahbayar` (`jumlahbayar`);
 
 --
 -- Indexes for table `petugas`
 --
 ALTER TABLE `petugas`
-  ADD PRIMARY KEY (`id_petugas`),
+  ADD PRIMARY KEY (`idpetugas`),
   ADD KEY `username` (`username`),
   ADD KEY `password` (`password`),
-  ADD KEY `nama_petugas` (`nama_petugas`);
+  ADD KEY `namapetugas` (`namapetugas`),
+  ADD KEY `level` (`level`);
 
 --
 -- Indexes for table `siswa`
@@ -134,15 +133,15 @@ ALTER TABLE `siswa`
   ADD PRIMARY KEY (`nisn`),
   ADD KEY `nis` (`nis`),
   ADD KEY `nama` (`nama`),
-  ADD KEY `id_kelas` (`id_kelas`),
-  ADD KEY `no_telp` (`no_telp`),
-  ADD KEY `id_spp` (`id_spp`);
+  ADD KEY `idkelas` (`idkelas`),
+  ADD KEY `notelp` (`notelp`),
+  ADD KEY `idspp` (`idspp`);
 
 --
 -- Indexes for table `spp`
 --
 ALTER TABLE `spp`
-  ADD PRIMARY KEY (`id_spp`),
+  ADD PRIMARY KEY (`idspp`),
   ADD KEY `tahun` (`tahun`),
   ADD KEY `nominal` (`nominal`);
 
@@ -154,22 +153,22 @@ ALTER TABLE `spp`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idkelas` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpembayaran` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpetugas` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `spp`
 --
 ALTER TABLE `spp`
-  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idspp` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -178,16 +177,7 @@ ALTER TABLE `spp`
 -- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pembayaran_ibfk_3` FOREIGN KEY (`id_spp`) REFERENCES `siswa` (`id_spp`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `siswa`
---
-ALTER TABLE `siswa`
-  ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `siswa_ibfk_2` FOREIGN KEY (`id_spp`) REFERENCES `spp` (`id_spp`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
